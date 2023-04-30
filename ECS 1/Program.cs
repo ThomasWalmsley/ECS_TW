@@ -9,49 +9,41 @@ namespace ECS_1
         {
             //ECS interactions
             ECS ecs = new ECS();
-            ecs.createArchetype("person", new List<Type> { typeof(Health), typeof(Name) });
+
+            //create person archetype
+            ecs.createArchetype("person",
+                typeof(Health),
+                typeof(Name),
+                typeof(IsAlive));
+
+            //create rock archetype
+            ecs.createArchetype("rock",
+                typeof(Health),
+                typeof(Name),
+                typeof(IsAlive)
+                );
+
+            //create cat archetype
+            ecs.createArchetype("cat",
+                typeof(Name),
+                typeof(Health),
+                typeof(IsAlive),
+                typeof(Cat)
+                );
+
+            Entity[] entities = new Entity[10];
+            for (int i = 0; i < 10; i++)
+            {
+                entities[i] = ecs.createEntity();
+            }
+            foreach (Entity entity in entities)
+            {
+                Console.WriteLine(entity.id);
+            }
 
 
-
-            //Boring tests
-
-
-
-
-
-
-
-
-            Dictionary<List<Type>, ValueType[]> archetypes = new Dictionary<List<Type>, ValueType[]>();
-
-            //Player archetype
-            List<Type> list1 = new List<Type>();
-
-            //Cat archetype
-            List<Type> list2 = new List<Type>();
-
-            //Monster archetype
-            List<Type> list3 = new List<Type>();
-
-            //create archetype name
-            list1.Add(typeof(Health));
-            list1.Add(typeof(Name));
-            list1.Add(typeof(IsAlive));
-
-
-            //add archetype to dictionary
-            archetypes.Add(list1, new ValueType[100]);
-
-
-            //get array from dictionary to edit the array
-            var array = archetypes[list1];
-
-            //edit array
-            array[0] = new Health(4);
-
-            //print
-            Console.WriteLine(array[0]);
-
+            ecs.printArchetypes();
+            ecs.printComponentIds();
 
             Console.ReadLine();
         }
