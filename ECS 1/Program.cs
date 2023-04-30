@@ -7,6 +7,21 @@ namespace ECS_1
     {
         static void Main(string[] args)
         {
+            //ECS interactions
+            ECS ecs = new ECS();
+            ecs.createArchetype("person", new List<Type> { typeof(Health), typeof(Name) });
+
+
+
+            //Boring tests
+
+
+
+
+
+
+
+
             Dictionary<List<Type>, ValueType[]> archetypes = new Dictionary<List<Type>, ValueType[]>();
 
             //Player archetype
